@@ -31,7 +31,7 @@ const createStudent = async (req, res) => {
   const { course_code, course_name, user_id, dept_id} = req.body;
 
   try {
-    const [result] = await pool.query('INSERT INTO student (first_name, mid_name, last_name, user_id, course_id) VALUES (?, ?, ?, ?)', [first_name, mid_name, last_name, user_id, course_id]);
+    const [result] = await pool.query('INSERT INTO student (first_name, mid_name, last_name, user_id, course_id) VALUES (?, ?, ?, ?, ?)', [first_name, mid_name, last_name, user_id, course_id]);
     res.status(201).json({ message: 'Student Selected' });
   } catch (err) {
     res.status(500).json({ error: err.message });
