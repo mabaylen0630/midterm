@@ -31,7 +31,7 @@ const createStudent = async (req, res) => {
   const { first_name, mid_name, last_name, user_id, course_id} = req.body;
 
   try {
-    const [result] = await pool.query('INSERT INTO student (first_name, mid_name, last_name, user_id, course_id) VALUES (?, ?, ?, ?, ?)', [first_name, mid_name, last_name, user_id, course_id]);
+    const [result] = await pool.query('INSERT INTO students (first_name, mid_name, last_name, user_id, course_id) VALUES (?, ?, ?, ?, ?)', [first_name, mid_name, last_name, user_id, course_id]);
     res.status(201).json({ message: 'Student Selected' });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -43,7 +43,7 @@ const updateStudent = async (req, res) => {
   const { first_name, mid_name, last_name, user_id, course_id } = req.body;
 
   try {
-    const [result] = await pool.query('UPDATE student SET first_name = ?, mid_name = ?, last_name =?, user_id = ? course_id =? WHERE student_id = ?', [first_name, mid_name, last_name, user_id, course_id, id]);
+    const [result] = await pool.query('UPDATE students SET first_name = ?, mid_name = ?, last_name =?, user_id = ? course_id =? WHERE student_id = ?', [first_name, mid_name, last_name, user_id, course_id, id]);
 
     if (result.affectedRows === 0) {
       return res.status(404).json({ error: 'Student not found' });
