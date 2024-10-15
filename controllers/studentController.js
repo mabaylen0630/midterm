@@ -28,7 +28,7 @@ const getStudentById = async (req, res) => {
 };
 
 const createStudent = async (req, res) => {
-  const { course_code, course_name, user_id, dept_id} = req.body;
+  const { first_name, mid_name, last_name, user_id, course_id} = req.body;
 
   try {
     const [result] = await pool.query('INSERT INTO student (first_name, mid_name, last_name, user_id, course_id) VALUES (?, ?, ?, ?, ?)', [first_name, mid_name, last_name, user_id, course_id]);
@@ -40,7 +40,7 @@ const createStudent = async (req, res) => {
 
 const updateStudent = async (req, res) => {
   const { id } = req.params;
-  const { course_code, course_name, user_id, dept_id } = req.body;
+  const { first_name, mid_name, last_name, user_id, course_id } = req.body;
 
   try {
     const [result] = await pool.query('UPDATE student SET first_name = ?, mid_name = ?, last_name =?, user_id = ? course_id =? WHERE student_id = ?', [first_name, mid_name, last_name, user_id, course_id, id]);
